@@ -7,19 +7,15 @@ public class LinkedList<T> implements List<T> {
     public void findFirst() {
         Current=Head;
     }
-
     public void findNext() {
         Current=Current.Next;
     }
-
     public T retrieve() {
         return Current.Data;
     }
-
     public void update(T Val) {
         Current.Data=Val;
     }
-
     public void insert(T Val) {
         Node<T> tmp;
         if(empty()) {
@@ -32,7 +28,6 @@ public class LinkedList<T> implements List<T> {
             Current.Next=tmp;
         }
     }
-
     public void remove() {
         if(Current==Head) {
             Head=Head.Next;
@@ -47,15 +42,12 @@ public class LinkedList<T> implements List<T> {
         else
             Current=Current.Next;
     }
-
     public boolean full() {
         return false;
     }
-
     public boolean empty() {
         return Head==null;
     }
-
     public boolean last() {
         return Current.Next==null;
     }
