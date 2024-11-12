@@ -80,5 +80,10 @@ public class LinkedList<T> implements List<T> {
         L.remove();
         L.display();
         System.out.print("sss");
+         System.out.print("sss");
+         System.out.print("sss");
+         System.out.print("sss");
+         System.out.print("sss");
+         System.out.print("sss");
     }
 }
