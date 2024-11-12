@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.Scanner;
 public class Reading {
 public static void Load(String filename) { //String filename the path of file
-    String line =null; //Read the line
+    String line =null; //Read the lines
     try{
         File file = new File(filename); //New file with file name (dataset.csv) the Excel
         Scanner input=new Scanner(file); //put file in Scanner
@@ -25,5 +25,4 @@ public static void Load(String filename) { //String filename the path of file
 }
 public static void main(String[] args) {
     Load("dataset.csv");
-}
-}
+}}
