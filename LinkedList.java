@@ -78,5 +78,6 @@ public class LinkedList<T> implements List<T> {
         L.findFirst();
         L.remove();
         L.display();
+        System.out.print("sss");
     }
 }
