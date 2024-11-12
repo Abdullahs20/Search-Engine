@@ -1,5 +1,4 @@
 import java.io.File;
-//import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Reading {
 public static void Load(String filename) { //String filename the path of file
