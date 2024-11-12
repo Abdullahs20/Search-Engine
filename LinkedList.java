@@ -1,4 +1,3 @@
-
 public class LinkedList<T> implements List<T> {
     private Node<T> Head;
     private Node<T> Current;
