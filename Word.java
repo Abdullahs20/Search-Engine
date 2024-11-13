@@ -1,5 +1,5 @@
 public class Word {
-    String Text; // the text we will delete it
+    String Text;
     LinkedList<Integer> DOC_ID; //Document id
     public Word(String x) {
         Text=x;
