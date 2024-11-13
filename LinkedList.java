@@ -72,3 +72,4 @@ public class LinkedList<T> implements List<T> {
         L.display();
     }
 }
+
