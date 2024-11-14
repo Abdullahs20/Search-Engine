@@ -19,6 +19,6 @@ public class Word {
         return false;
     }
     public void Add_ID(int id) {
-        if(IsExists_DOC_ID(id)) //IsExists to search in LL
+        if(!IsExists_DOC_ID(id)) //IsExists to search in LL
             DOC_ID.insert(id);}}
 //we can add without use IsExists because the ID is unique but we take careful

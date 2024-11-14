@@ -52,12 +52,12 @@ public class LinkedList<T> implements List<T> {
         return Current.Next==null;
     }
     //Add size??
-    public void display() { //By mos
+    public void display() {
         if(Head==null)
             System.out.println("List is Empty! ");
         Node<T> q=Head;
         while(q!=null) {
-            System.out.println(q.Data+" ");
+            System.out.print(q.Data+" ");
             q=q.Next;
         }
     }
