@@ -20,5 +20,13 @@ public class Word {
     }
     public void Add_ID(int id) {
         if(!IsExists_DOC_ID(id)) //IsExists to search in LL
-            DOC_ID.insert(id);}}
+            DOC_ID.insert(id);}
+    public void display() {
+        System.out.println("\n----------------------------------");
+        System.out.print(" the word: " + Text);
+        System.out.print(" ( ");
+        DOC_ID.display();
+        System.out.print(" )");
+    }
+}
 //we can add without use IsExists because the ID is unique but we take careful

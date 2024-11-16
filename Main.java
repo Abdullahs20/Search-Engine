@@ -5,10 +5,12 @@ public class Main {
         LinkedList <String> StopWord;
         Index Index; //LL and Doc
         InvertedIndex Inverted; //LL of word
+        InvertedindexBST InvertedBST;
         public Main(){
             StopWord = new LinkedList<>();
             Index= new Index() ;
             Inverted =new InvertedIndex() ;
+            InvertedBST =new InvertedindexBST();
         }
         public void LoadStopWords (String fileName){ //Load the stop words to read it
             try {
@@ -38,7 +40,7 @@ public class Main {
                     int ID = Integer.parseInt(x.trim());
                     String Content = line.substring(line.indexOf(",") + 1);
                     LinkedList<String> WordInDoc = LLOfWordInIndexOfInvertedIndex(Content, ID);
-                    Index.Add_Doc(new Document(ID, WordInDoc)); //All word and with their Doc
+                    Index.Add_Doc(new Document(ID, WordInDoc,Content)); //All word and with their Doc
                 }
             } catch(Exception e) {
                 System.out.println(e);
@@ -56,6 +58,7 @@ public class Main {
                 if (!IsExistInStopWord(W)) { //Search !!!!
                     WordsInDoc.insert(W);
                     Inverted.add(W, ID);
+                    InvertedBST.add(W, ID);
                 }
             }
         }
@@ -78,12 +81,14 @@ public class Main {
             LoadStopWords(StopFile); //Focus stop word text should be before the Doc file
             LoadAllDoc(DocumentFile);
         }
-        public static void main (String [] args) {
+    public static void main (String [] args) {
             Main d = new Main();
             d.LoadFiles("stop.txt", "dataset.csv");
-            d.Index.DisplayDoc();
+//            d.Index.DisplayDoc();
             System.out.println("\n======================");
-            d.Inverted.display_inverted_index(); //from class InvertedIndex*
-        }
+//            d.Inverted.display_inverted_index(); //from class InvertedIndex*
+        System.out.println("\n======================");
+        d.InvertedBST.DisplayInvertedIndex();
+    }
     }
 

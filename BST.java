@@ -16,9 +16,9 @@ public class BST<T> {
         BSTNode<T> p = Root;
         while (p != null) {
             Current = p;
-            if (K.compareTo(p.Key) == 0) {
+            if (K.compareToIgnoreCase(p.Key) == 0) {
                 return true;
-            } else if (K.compareTo(p.Key) < 0) {
+            } else if (K.compareToIgnoreCase(p.Key) < 0) {
                 p = p.Left;
             } else {
                 p = p.Right;
@@ -37,7 +37,7 @@ public class BST<T> {
             return false;
         }
         BSTNode<T> tmp = new BSTNode<T>(K, Val);
-        if (K.compareTo(Current.Key) < 0) {
+        if (K.compareToIgnoreCase(Current.Key) < 0) {
             Current.Left = tmp;
         } else {
             Current.Right = tmp;
@@ -55,24 +55,23 @@ public class BST<T> {
         if (P == null)
             return;
         InOrder(P.Left);
-        System.out.println("key= " + P.Key);
-        System.out.println(P.Data);
+//        System.out.println("key: " + P.Key);
+       ((Word)P.Data).display();
         InOrder(P.Right);
+    }
+    public void PreOrder() {
+        if (Root == null)
+            System.out.println("empty tree");
+        else
+            PreOrder(Root);
     }
     private void PreOrder(BSTNode<T> P) {
         if (P == null)
             return;
-        System.out.println("key= " + P.Key);
-        System.out.println(P.Data);
+//        System.out.println("key: " + P.Key);
+       ((Word)P.Data).display();
         PreOrder(P.Left);
         PreOrder(P.Right);
     }
-    private void PostOrder(BSTNode<T> P) {
-        if (P == null)
-            return;
-        PostOrder(P.Left);
-        PostOrder(P.Right);
-        System.out.println("key= " + P.Key);
-        System.out.println(P.Data);
     }
-}
+
