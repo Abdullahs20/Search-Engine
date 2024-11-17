@@ -111,12 +111,18 @@ public class Main {
 //          d.Inverted.display_inverted_index(); //from class InvertedIndex*
         System.out.println("\n======================");
 //        d.InvertedBST.DisplayInvertedIndex();
-//         d.Inverted.display_inverted_index();
+      //  d.Inverted.display_inverted_index();
 
-         QueryP q=new QueryP(d.Inverted);
-        LinkedList l=QueryP.ORQuery("businessORworld");
+
+        QueryPBST q=new QueryPBST(d.InvertedBST);
+        LinkedList l=QueryPBST.MixedQuery("market OR sports AND warming");
         d.DisplayDocWithID(l);
+        System.out.println("\n======================");
 
+
+//        InvertedindexBST i=new InvertedindexBST();
+//        i.add("market",2);
+//        i.DisplayInvertedIndex();
 
     }
 }
