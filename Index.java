@@ -28,26 +28,19 @@ public class Index { // LL of LL
         D.Word.display();
         //this is for last element
     }
-    public void DisplayDocWithID(LinkedList<Integer> Id){
-        if(Id.empty()){
-            System.out.println("No Document Found");
-            return;
+    public Document GetDocByID(int id) {
+        if(Document.empty()) {
+            System.out.println("no documents exist");
+            return null;
         }
-        Id.findFirst();
-        while (!Id.last()) {
-            Document D=Index.GetDocByID(Id.retrieve());
-            if(D!=null){
-                System.out.println("\nDocument "+D.ID +": "+D.Content);
-//                System.out.println("\n");
-            }
-            Id.findNext();
+        Document.findFirst();
+        while(!Document.last()) {
+            if(Document.retrieve().ID == id)
+                return Document.retrieve();
+            Document.findNext();
         }
-        Document D=Index.GetDocByID(Id.retrieve());
-        if(D!=null){
-            System.out.println("\nDocument "+D.ID +": "+D.Content);
-//            System.out.println("\n");
-        }
-        System.out.println("===================");
-
+        if(Document.retrieve().ID == id)
+            return Document.retrieve();
+        return null;
     }
 }
