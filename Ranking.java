@@ -67,5 +67,80 @@ public static int getScore(Document d, String Query) {
         }
         return false;
     }
+    public static void AddingInIdsList(LinkedList<Integer> LL){
+        if(LL.empty())
+            return;
+        LL.findFirst();
+        while(!LL.empty()){
+            boolean Found = IsExistsInResult(AllDocInQuery, LL.retrieve());
+            if(!Found){
+                AllDocInQuery.insert(LL.retrieve());
+            }
+            if(!LL.last())
+                LL.findNext();
+            else
+                break;
+        }
+    }
+    public static void RankRetrival(String Query){
+        LinkedList<Integer> LL = new LinkedList<Integer>();
+        if(Query.length()==0)
+            return ;
+        String[] T = Query.split(" ");
+        boolean found = false;
+        int i = 0;
+        while (i < T.length) {
+            found= InvertedBST.SearchWordInInverted(T[i].trim().toLowerCase());
+            if(found){
+                LL = InvertedBST.Inverted_Index.Retrieve().DOC_ID;
+                AddingInIdsList(LL);
+            }
+            i++;
+        }
+    }
+
+    private static void insertSortedRank(DocRank douR) {
+        if (AllDocRank.empty()) {
+            AllDocRank.insert(douR);
+            return;
+        }
+        AllDocRank.findFirst();
+        while (!AllDocRank.last()) {
+            if (douR.Rank > AllDocRank.retrieve().Rank) {
+                DocRank dr1 = AllDocRank.retrieve();
+                AllDocRank.update(douR);
+                AllDocRank.insert(dr1);
+                return;
+            } else
+                AllDocRank.findNext();
+        }
+        if (douR.Rank >AllDocRank.retrieve().Rank) {
+            DocRank dr1 = AllDocRank.retrieve();
+            AllDocRank.update(douR);
+            AllDocRank.insert(dr1);
+            return;
+        } else
+            AllDocRank.insert(douR);
+
+    }
+    public static void insertSortedByRank() {
+        RankRetrival(Query);
+        if (AllDocInQuery.empty()) {
+            System.out.println("the query doesn't exist");
+            return;
+        }
+        AllDocInQuery.findFirst();
+        while (!AllDocInQuery.last()) {
+            Document Doc = GetDocByID(AllDocInQuery.retrieve());
+            int Rank = getScore(Doc, Query);
+            DocRank DocR = new DocRank(AllDocInQuery.retrieve(), Rank);
+            insertSortedRank(DocR);
+            AllDocInQuery.findNext();
+        }
+        Document Doc = GetDocByID(AllDocInQuery.retrieve());
+        int Rank = getScore(Doc, Query);
+        DocRank DocR = new DocRank(AllDocInQuery.retrieve(), Rank);
+        insertSortedRank(DocR);
+    }
 
 }
