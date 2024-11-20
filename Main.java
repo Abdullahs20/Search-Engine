@@ -2,10 +2,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 public class Main {
-    LinkedList <String> StopWord;
-    Index Index; //LL and Doc
-    InvertedIndex Inverted; //LL of word
-    InvertedindexBST InvertedBST;
+    static LinkedList <String> StopWord;
+    static Index Index; //LL and Doc
+    static InvertedIndex Inverted; //LL of word
+    static InvertedindexBST InvertedBST;
     public Main(){
         StopWord = new LinkedList<>();
         Index= new Index() ;
@@ -123,6 +123,8 @@ public class Main {
 //        InvertedindexBST i=new InvertedindexBST();
 //        i.add("market",2);
 //        i.DisplayInvertedIndex();
+
+
 
     }
 }
