@@ -1,6 +1,6 @@
-public class QueryP {
-    static InvertedIndex Inverted_Index;
-    public QueryP(InvertedIndex Inverted) {
+public class QueryPBST {
+    static InvertedindexBST Inverted_Index;
+    public QueryPBST(InvertedindexBST Inverted) {
         this.Inverted_Index = Inverted;
     }
     public static LinkedList<Integer>AndQuery(String Query) { //7
@@ -9,14 +9,14 @@ public class QueryP {
         String[] T = Query.split("AND");//use split in array
         if (T.length == 0)
             return X;
-        boolean Found = Inverted_Index.search_inverted_word_(T[0].trim().toLowerCase()); //search_inverted_word_ you find it in class InvertedIndex , also when we split the new LL will be empty
+        boolean Found = Inverted_Index.SearchWordInInverted(T[0].trim().toLowerCase()); //search_inverted_word_ you find it in class InvertedIndex , also when we split the new LL will be empty
         if (Found) {
-            X = Inverted_Index.WordList.retrieve().DOC_ID;
+            X = Inverted_Index.Inverted_Index.Retrieve().DOC_ID;
         }
         for (int i = 1; i < T.length; i++) {
-            Found = Inverted_Index.search_inverted_word_(T[i].trim().toLowerCase());
+            Found = Inverted_Index.SearchWordInInverted(T[i].trim().toLowerCase());
             if (Found)
-                Y = Inverted_Index.WordList.retrieve().DOC_ID;
+                Y = Inverted_Index.Inverted_Index.Retrieve().DOC_ID;
             X = AndQuery(X, Y);
         }
         return X;
@@ -53,14 +53,14 @@ public class QueryP {
         LinkedList<Integer> B = new LinkedList<Integer>();
         String [] T = Query.split("OR");
         if (T.length == 0) return A;
-        boolean Found = Inverted_Index.search_inverted_word_(T[0].trim().toLowerCase());
+        boolean Found = Inverted_Index.SearchWordInInverted(T[0].trim().toLowerCase());
         if (Found) {
-            A = Inverted_Index.WordList.retrieve().DOC_ID;
+            A = Inverted_Index.Inverted_Index.Retrieve().DOC_ID;
         }
         for (int i = 1; i < T.length; i++) {
-            Found = Inverted_Index.search_inverted_word_(T[i].trim().toLowerCase());
+            Found = Inverted_Index.SearchWordInInverted(T[i].trim().toLowerCase());
             if (Found) {
-                B = Inverted_Index.WordList.retrieve().DOC_ID;
+                B = Inverted_Index.Inverted_Index.Retrieve().DOC_ID;
             }
             A = ORQuery(A, B);
         }

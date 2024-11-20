@@ -6,6 +6,16 @@ public class InvertedindexBST {
     public boolean SearchWordInInverted(String w) {
         return Inverted_Index.FindKey(w);
     }
+    public void Add(InvertedIndex inverted){
+        if(inverted.inverted_index.empty())
+            return;
+        inverted.inverted_index.findFirst();
+        while (!inverted.inverted_index.last()){
+            Inverted_Index.Insert(inverted.inverted_index.retrieve().Text,inverted.inverted_index.retrieve());
+                    inverted.inverted_index.findNext();
+        }
+        Inverted_Index.Insert(inverted.inverted_index.retrieve().Text,inverted.inverted_index.retrieve());
+    }
     public void add(String text, int id) {
         if (!SearchWordInInverted(text)) {
             Word w = new Word(text);

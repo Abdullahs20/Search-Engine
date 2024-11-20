@@ -16,7 +16,7 @@ public class Index { // LL of LL
             return;}
         Document.findFirst(); //to start from beginning
         while(!Document.last()) {
-            Document D= Document.retrieve(); //,, using retrieve will give you an obj of document
+            Document D= Document.retrieve(); //, using retrieve will give you an obj of document
             System.out.println("\n--------------------------------------------------------------------------------");
             System.out.println("ID "+ D.ID);
             D.Word.display(); //display from class LL (19)
@@ -27,5 +27,20 @@ public class Index { // LL of LL
         System.out.println("ID "+ D.ID);
         D.Word.display();
         //this is for last element
+    }
+    public Document GetDocByID(int id) {
+        if(Document.empty()) {
+            System.out.println("no documents exist");
+            return null;
+        }
+        Document.findFirst();
+        while(!Document.last()) {
+            if(Document.retrieve().ID == id)
+                return Document.retrieve();
+            Document.findNext();
+        }
+        if(Document.retrieve().ID == id)
+            return Document.retrieve();
+        return null;
     }
 }
