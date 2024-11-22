@@ -9,4 +9,5 @@ public interface List<T> {
     public boolean empty( );
     public boolean last( );
     public void display( );
+    public boolean search(T x);
 }
