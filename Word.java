@@ -22,7 +22,7 @@ public class Word {
         if(!IsExists_DOC_ID(id)) //IsExists to search in LL
             DOC_ID.insert(id);}
     public void display() { //this method display the word and it is ids
-        System.out.println(" the word: " + Text);
+        System.out.println(" The Word: " + Text);
         System.out.print(" ( ");
         DOC_ID.display();
         System.out.print(" )");
