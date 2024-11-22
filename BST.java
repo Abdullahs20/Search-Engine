@@ -59,19 +59,5 @@ public class BST<T> {
        ((Word)P.Data).display();
         InOrder(P.Right);
     }
-    public void PreOrder() {
-        if (Root == null)
-            System.out.println("empty tree");
-        else
-            PreOrder(Root);
-    }
-    private void PreOrder(BSTNode<T> P) {
-        if (P == null)
-            return;
-//        System.out.println("key: " + P.Key);
-       ((Word)P.Data).display();
-        PreOrder(P.Left);
-        PreOrder(P.Right);
-    }
     }
 
