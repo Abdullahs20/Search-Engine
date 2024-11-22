@@ -7,5 +7,4 @@ public class Document { //we have id and Linked list String to save the words wi
         Word=Words;
         Content=Contents;
     }
-//    all doc.retrive().words or id
-} //retrive will give you an object from document
+} 
