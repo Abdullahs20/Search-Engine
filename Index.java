@@ -1,46 +1,62 @@
 public class Index { // LL of LL
-    LinkedList<Document> Document; //LL of documents
+    LinkedList<Document> Documents; //LL of documents
     public Index() {
-        Document =new LinkedList<Document>();
+        Documents =new LinkedList<Document>();
+    }
+    public LinkedList<Integer> getDocumentTerm(String Term) {//Check if it's empty will be null or we can return LL
+        LinkedList<Integer> Check=new LinkedList<>();
+        if(Documents.empty()){
+            System.out.println("Document is empty");
+            return null;
+        }
+        Documents.findFirst();
+        while(!Documents.last()){//move in all
+            if(Documents.retrieve().Word.search(Term.toLowerCase().trim()))//we check the words if it's equal the word i search for it so will add his ID in the new LL
+                Check.insert(Documents.retrieve().ID); //Adding the ID
+            Documents.findNext();
+        }
+        if(Documents.retrieve().Word.search(Term.trim().toLowerCase()))
+            Check.insert(Documents.retrieve().ID);
+        return Check; //return the LL
     }
     public void Add_Doc(Document s) {
-        Document.insert(s); //normal add
+        Documents.insert(s); //normal add
     }
     public void DisplayDoc() { //to display all the document
-        if(Document ==null) {
+        if(Documents ==null) {
             System.out.println("We don't have any Document");
             return;
         }
-        else if(Document.empty()) {
+        else if(Documents.empty()) {
             System.out.println("The Document is empty");
             return;}
-        Document.findFirst(); //to start from beginning
-        while(!Document.last()) {
-            Document D= Document.retrieve(); //, using retrieve will give you an obj of document
+        Documents.findFirst(); //to start from beginning
+        while(!Documents.last()) {
+            Document D= Documents.retrieve(); //,, using retrieve will give you an obj of document
             System.out.println("\n--------------------------------------------------------------------------------");
             System.out.println("ID "+ D.ID);
             D.Word.display(); //display from class LL (19)
-            Document.findNext();
+            Documents.findNext();
         }
-        Document D= Document.retrieve();
+        Document D= Documents.retrieve();
         System.out.println("\n--------------------------------------------------------------------------------");
         System.out.println("ID "+ D.ID);
         D.Word.display();
         //this is for last element
     }
     public Document GetDocByID(int id) {
-        if(Document.empty()) {
-            System.out.println("no documents exist");
+        if(Documents.empty()) {
+            System.out.println("no documents exist"); //ch
             return null;
         }
-        Document.findFirst();
-        while(!Document.last()) {
-            if(Document.retrieve().ID == id)
-                return Document.retrieve();
-            Document.findNext();
+        Documents.findFirst();
+        while(!Documents.last()) {
+            if(Documents.retrieve().ID == id)
+                return Documents.retrieve();
+            Documents.findNext();
         }
-        if(Document.retrieve().ID == id)
-            return Document.retrieve();
+        if(Documents.retrieve().ID == id)
+            return Documents.retrieve();
         return null;
     }
 }
