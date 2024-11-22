@@ -5,7 +5,7 @@ public class Word {
         Text=x;
         DOC_ID=new LinkedList<Integer>(); // new LL to add anything
     }
-    public boolean IsExists_DOC_ID(Integer id) {
+    public boolean IsExists_DOC_ID(Integer id) { // use it to check ehether the given id already exists or not
         if(DOC_ID.empty())
             return false;
         while(!DOC_ID.last()) {
@@ -18,15 +18,15 @@ public class Word {
             return true;}
         return false;
     }
-    public void Add_ID(int id) {
+    public void Add_ID(int id) { //this method add the id if does not exists
         if(!IsExists_DOC_ID(id)) //IsExists to search in LL
             DOC_ID.insert(id);}
-    public void display() {
-        System.out.println("\n----------------------------------");
-        System.out.print(" the word: " + Text);
+    public void display() { //this method display the word and it is ids
+        System.out.println(" the word: " + Text);
         System.out.print(" ( ");
         DOC_ID.display();
         System.out.print(" )");
+        System.out.println("\n----------------------------------");
+
     }
 }
-//we can add without use IsExists because the ID is unique but we take careful
