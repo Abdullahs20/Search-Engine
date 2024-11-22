@@ -21,7 +21,7 @@ public class QueryPBST {
         }
         return X;
     }
-    public static LinkedList<Integer> AndQuery(LinkedList<Integer> A, LinkedList<Integer> B){ //use LL to make split
+    private static LinkedList<Integer> AndQuery(LinkedList<Integer> A, LinkedList<Integer> B){ //use LL to make split
         LinkedList<Integer> Result = new LinkedList<>();
         if (A.empty() || B.empty())
             return Result;
@@ -66,7 +66,7 @@ public class QueryPBST {
         }
         return A;
     }
-    public static LinkedList<Integer> ORQuery(LinkedList<Integer> A, LinkedList<Integer> B) {
+    private static LinkedList<Integer> ORQuery(LinkedList<Integer> A, LinkedList<Integer> B) {
         LinkedList<Integer> Result = new LinkedList<Integer>();
         if (A.empty() && B.empty())
             return Result;
