@@ -1,5 +1,4 @@
 public class QueryIndex {
-    //this is the worst because will move in every document also inside it we will search in almost in every words BigO(n*words)
 static Index Index;
 public QueryIndex(Index index) {
     Index = index;
@@ -11,7 +10,7 @@ public static LinkedList<Integer> AndQuery(String Query) {
     String[] terms = Query.split("AND");
     if (terms.length == 0)
         return Result;
-    Result = Index.getDocumentTerm(terms[0].trim().toLowerCase());// we use this getDocumentTerm instead of searching because the previous search in QueryP and QueryPBST  it's return a boolean
+    Result = Index.getDocumentTerm(terms[0].trim().toLowerCase());
     for (int i = 1; i < terms.length; i++) {
         LinkedList<Integer> Result1 = Index.getDocumentTerm(terms[i].trim().toLowerCase());
         Result = AndQuery(Result, Result1);
@@ -21,13 +20,13 @@ public static LinkedList<Integer> AndQuery(String Query) {
     }
     return Result;
 }
-    private static LinkedList<Integer> AndQuery(LinkedList<Integer> A, LinkedList<Integer> B){ //use LL to make split
+    private static LinkedList<Integer> AndQuery(LinkedList<Integer> A, LinkedList<Integer> B){
         LinkedList<Integer> Result = new LinkedList<>();
         if (A.empty() || B.empty())
             return Result;
         A.findFirst();
         while (true) {
-            boolean Found = ExistInRes(Result, A.retrieve()); //if you didn't find it you will use the code in 35 to 47 line
+            boolean Found = ExistInRes(Result, A.retrieve());
             if (!Found) {
                 B.findFirst();
                 while (true) {
@@ -65,7 +64,7 @@ public static LinkedList<Integer> AndQuery(String Query) {
         if (A.empty() && B.empty())
             return Result;
         A.findFirst();
-        while (!A.empty()) { //we be false when it's empty
+        while (!A.empty()) {
             boolean Found = ExistInRes(Result, A.retrieve());
             if (!Found) {
                 Result.insert(A.retrieve());
