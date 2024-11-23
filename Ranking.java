@@ -24,32 +24,32 @@ public class Ranking {
         }
         AllDocRank.retrieve().display();
     }
-    public static Document GetDocByID(int id){
+    public static Document GetDocByID(int id){ // this method retrieve the Document by given id
         return Index.GetDocByID(id);
     }
-public static int getScore(Document d, String Query) {
-    LinkedList<String> terms = d.Word;
-    if (Query.length() == 0 || terms.empty())
-        return 0;
-    int score = 0;
-    String[] T = Query.split(" ");
-    int i = 0;
-    while (i < T.length) {
-        String term = T[i].trim().toLowerCase();
-        int repeat = 0;
-        terms.findFirst();
-        while (!terms.last()) {
+    public static int getScore(Document d, String Query) {
+        LinkedList<String> terms = d.Word;
+        if (Query.length() == 0 || terms.empty())
+            return 0;
+        int score = 0;
+        String[] T = Query.split(" ");
+        int i = 0;
+        while (i < T.length) {
+            String term = T[i].trim().toLowerCase();
+            int repeat = 0;
+            terms.findFirst();
+            while (!terms.last()) {
+                if (terms.retrieve().equalsIgnoreCase(term))
+                    repeat++;
+                terms.findNext();
+            }
             if (terms.retrieve().equalsIgnoreCase(term))
                 repeat++;
-            terms.findNext();
+            score += repeat;
+            i++;
         }
-        if (terms.retrieve().equalsIgnoreCase(term))
-            repeat++;
-        score += repeat;
-        i++;
+        return score;
     }
-    return score;
-}
 
 
     public static boolean IsExistsInResult(LinkedList<Integer>result, Integer id){
