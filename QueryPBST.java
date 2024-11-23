@@ -3,13 +3,13 @@ public class QueryPBST {
     public QueryPBST(InvertedindexBST Inverted) {
         this.Inverted_Index = Inverted;
     }
-    public static LinkedList<Integer>AndQuery(String Query) { //7
-        LinkedList<Integer> X = new LinkedList<>();//Two LL to Work With it
+    public static LinkedList<Integer>AndQuery(String Query) {
+        LinkedList<Integer> X = new LinkedList<>();
         LinkedList<Integer> Y = new LinkedList<>();
-        String[] T = Query.split("AND");//use split in array
+        String[] T = Query.split("AND");
         if (T.length == 0)
             return X;
-        boolean Found = Inverted_Index.SearchWordInInverted(T[0].trim().toLowerCase()); //search_inverted_word_ you find it in class InvertedIndex , also when we split the new LL will be empty
+        boolean Found = Inverted_Index.SearchWordInInverted(T[0].trim().toLowerCase());
         if (Found) {
             X = Inverted_Index.Inverted_Index.Retrieve().DOC_ID;
         }
@@ -21,13 +21,13 @@ public class QueryPBST {
         }
         return X;
     }
-    private static LinkedList<Integer> AndQuery(LinkedList<Integer> A, LinkedList<Integer> B){ //use LL to make split
+    private static LinkedList<Integer> AndQuery(LinkedList<Integer> A, LinkedList<Integer> B){
         LinkedList<Integer> Result = new LinkedList<>();
         if (A.empty() || B.empty())
             return Result;
         A.findFirst();
         while (true) {
-            boolean Found = ExistInRes(Result, A.retrieve()); //if you didn't find it you will use the code in 35 to 47 line
+            boolean Found = ExistInRes(Result, A.retrieve());
             if (!Found) {
                 B.findFirst();
                 while (true) {
@@ -71,7 +71,7 @@ public class QueryPBST {
         if (A.empty() && B.empty())
             return Result;
         A.findFirst();
-        while (!A.empty()) { //we be false when it's empty
+        while (!A.empty()) {
             boolean Found = ExistInRes(Result, A.retrieve());
             if (!Found) {
                 Result.insert(A.retrieve());
