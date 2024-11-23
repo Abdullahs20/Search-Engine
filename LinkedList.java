@@ -1,6 +1,7 @@
 public class LinkedList<T> implements List<T> {
     private Node<T> Head;
     private Node<T> Current;
+    int Num;
     public LinkedList() {
         Head=Current=null;
     }
@@ -17,6 +18,7 @@ public class LinkedList<T> implements List<T> {
         Current.Data=Val;
     }
     public void insert(T Val) {
+        Num++;
         Node<T> tmp;
         if(empty()) {
             Current=Head=new Node<T>(Val);
@@ -51,8 +53,9 @@ public class LinkedList<T> implements List<T> {
     public boolean last() {
         return Current.Next==null;
     }
-    //Add size??
     public void display() {
+        if(this==null)
+            System.out.println("List is Null!");
         if(Head==null)
             System.out.println("List is Empty! ");
         Node<T> q=Head;
@@ -61,15 +64,14 @@ public class LinkedList<T> implements List<T> {
             q=q.Next;
         }
     }
-    public static void main(String[] args) {
-        List<String>L=new LinkedList<String>();
-        L.insert("aa");
-        L.insert("v");
-        L.insert("f");
-        L.display();
-        L.findFirst();
-        L.remove();
-        L.display();
+    public boolean search(T x) {
+        Node<T> tmp = Head;
+        while (tmp != null) {
+            if (tmp.Data.equals(x))
+                return true;
+
+            tmp = tmp.Next;
+        }
+        return false;
     }
 }
-
