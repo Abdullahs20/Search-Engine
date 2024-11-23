@@ -1,5 +1,6 @@
 public class InvertedindexBST {
     BST<Word> Inverted_Index;
+    LinkedList<Document> DD;
     public InvertedindexBST() {
         Inverted_Index = new BST<Word>();
     }
@@ -26,5 +27,6 @@ public class InvertedindexBST {
             return;
         }
         Inverted_Index.InOrder();
+        System.out.println("\n");
     }
 }
