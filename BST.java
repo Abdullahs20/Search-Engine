@@ -55,9 +55,7 @@ public class BST<T> {
         if (P == null)
             return;
         InOrder(P.Left);
-//        System.out.println("key: " + P.Key);
        ((Word)P.Data).display();
         InOrder(P.Right);
     }
     }
-
