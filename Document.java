@@ -1,4 +1,4 @@
-public class Document { //we have id and Linked list String to save the words without stop words
+public class Document {
     LinkedList<String>Word=new LinkedList<String>();
     int ID;
     String Content;
@@ -6,5 +6,4 @@ public class Document { //we have id and Linked list String to save the words wi
         ID=id;
         Word=Words;
         Content=Contents;
-    }
-} 
+    }}
