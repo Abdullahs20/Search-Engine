@@ -1,6 +1,5 @@
 public class InvertedIndex {
     LinkedList<Word> WordList;
-
     public InvertedIndex(){
         WordList=new LinkedList<Word>();
     }
