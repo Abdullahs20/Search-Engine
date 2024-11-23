@@ -3,26 +3,26 @@ public class Word {
     LinkedList<Integer> DOC_ID; //Document id
     public Word(String x) {
         Text=x;
-        DOC_ID=new LinkedList<Integer>(); // new LL to add anything
+        DOC_ID=new LinkedList<Integer>();
     }
-    public boolean IsExists_DOC_ID(Integer id) { // use it to check ehether the given id already exists or not
+    public boolean IsExists_DOC_ID(Integer id) {
         if(DOC_ID.empty())
             return false;
         while(!DOC_ID.last()) {
-            if(DOC_ID.retrieve().equals(id)) { //retrieve will bring the same data of the LL (Integer)
+            if(DOC_ID.retrieve().equals(id)) {
                 return true;
             }
             DOC_ID.findNext();
         }
-        if(DOC_ID.retrieve().equals(id)) { //this check for last element in the LL
+        if(DOC_ID.retrieve().equals(id)) {
             return true;}
         return false;
     }
-    public void Add_ID(int id) { //this method add the id if does not exists
-        if(!IsExists_DOC_ID(id)) //IsExists to search in LL
+    public void Add_ID(int id) {
+        if(!IsExists_DOC_ID(id))
             DOC_ID.insert(id);}
-    public void display() { //this method display the word and it is ids
-        System.out.println(" The Word: " + Text);
+    public void display() {
+        System.out.println("Term: " + Text);
         System.out.print(" ( ");
         DOC_ID.display();
         System.out.print(" )");
